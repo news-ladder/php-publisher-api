@@ -1,0 +1,17 @@
+{
+    "name": "newsladder/publisherapi",
+    "description": "News Ladder php composer framework to interact with the publisher api",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Newsladder\\Publisherapi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "News Ladder",
+            "email": "tech@news-ladder.com"
+        }
+    ],
+    "require": {}
+}
