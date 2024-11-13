@@ -1,6 +1,6 @@
-# NewsLadder Library for the Publisher API
+# News Ladder library for the Publisher API
 
-This repository contains the NewsLadder library, which provides functionality for handling transactions and HTTP requests within the NewsLadder system and the system of a publisher.
+This repository contains the News Ladder library, which provides functionality for handling transactions and HTTP requests within the News Ladder system and the system of a publisher.
 
 ## Table of Contents
 
@@ -13,12 +13,18 @@ This repository contains the NewsLadder library, which provides functionality fo
 
 ## Installation
 
-To install the NewsLadder library, you can use Composer. Add the following to your `composer.json` file:
+To install the News Ladder library, you can use Composer:
+
+```shell
+composer require newsladder/publisher-api
+```
+
+Alternatively, you can add the following directly to your `composer.json` file:
 
 ```json
 {
     "require": {
-        "newsladder": "dev-master"
+        "newsladder/publisher-api": "dev-master"
     }
 }
 ```
@@ -29,14 +35,14 @@ Then run:
 composer install
 ```
 
-
 ## Usage
 
-### NewsLadderTransaction
+### `NewsLadderTransaction`
 
-The NewsLadderTransaction class represents a transaction in the NewsLadder system.
+The NewsLadderTransaction class represents a transaction in the News Ladder system.
 
 **Example**
+
 ```php
 <?php
 use Newsladder\lib\NewsLadderTransaction;
@@ -54,7 +60,7 @@ $response = $transaction->verify();
 print_r($response);
 ```
 
-### NewsLadderRequest
+### `NewsLadderRequest`
 
 The NewsLadderRequest class handles HTTP requests for the NewsLadder system.
 
@@ -69,7 +75,7 @@ $response = $request->send($request->url, $request->payload);
 print_r($response);
 ```
 
-### NewsLadderOrigins
+### `NewsLadderOrigins`
 
 The NewsLadderOrigins class contains constants for allowed origins and service URLs in the NewsLadder system.
 
@@ -85,4 +91,4 @@ $tankUrl = NewsLadderOrigins::TANK;
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
