@@ -1,17 +1,17 @@
 {
-    "name": "newsladder/publisher-api",
+    "name": "news-ladder/publisher-api",
     "description": "News Ladder PHP library to interact with the Publisher API",
     "type": "library",
-    "autoload": {
-        "psr-4": {
-            "Newsladder\\Publisherapi\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "News Ladder",
             "email": "tech@news-ladder.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "NewsLadder\\PublisherAPI\\": "src/"
+        }
+    },
     "require": {}
 }

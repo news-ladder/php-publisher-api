@@ -6,9 +6,9 @@ This repository contains the News Ladder library, which provides functionality f
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [NewsLadderTransaction](#newsladdertransaction)
-  - [NewsLadderRequest](#newsladderrequest)
-  - [NewsLadderOrigins](#newsladderorigins)
+  - [`Transaction`](#transaction)
+  - [`Request`](#request)
+  - [`Origins`](#origins)
 - [License](#license)
 
 ## Installation
@@ -16,7 +16,7 @@ This repository contains the News Ladder library, which provides functionality f
 To install the News Ladder library, you can use Composer:
 
 ```shell
-composer require newsladder/publisher-api
+composer require news-ladder/publisher-api
 ```
 
 Alternatively, you can add the following directly to your `composer.json` file:
@@ -24,7 +24,7 @@ Alternatively, you can add the following directly to your `composer.json` file:
 ```json
 {
     "require": {
-        "newsladder/publisher-api": "dev-master"
+        "news-ladder/publisher-api": "dev-master"
     }
 }
 ```
@@ -37,17 +37,17 @@ composer install
 
 ## Usage
 
-### `NewsLadderTransaction`
+### `Transaction`
 
-The NewsLadderTransaction class represents a transaction in the News Ladder system.
+The Transaction class represents a transaction in the News Ladder system.
 
 **Example**
 
 ```php
 <?php
-use Newsladder\lib\NewsLadderTransaction;
+use NewsLadder\PublisherAPI\Transaction;
 
-$transaction = new NewsLadderTransaction(
+$transaction = new Transaction(
     'example.com',
     'https://example.com/article',
     'Example Article',
@@ -60,33 +60,33 @@ $response = $transaction->verify();
 print_r($response);
 ```
 
-### `NewsLadderRequest`
+### `Request`
 
-The NewsLadderRequest class handles HTTP requests for the NewsLadder system.
+The Request class handles HTTP requests for the News Ladder system.
 
 **Example**
 
 ```php
 <?php
-use Newsladder\lib\NewsLadderRequest;
+use NewsLadder\PublisherAPI\Request;
 
-$request = new NewsLadderRequest('https://example.com/api', ['param' => 'value']);
+$request = new Request('https://example.com/api', ['param' => 'value']);
 $response = $request->send($request->url, $request->payload);
 print_r($response);
 ```
 
-### `NewsLadderOrigins`
+### `Origins`
 
-The NewsLadderOrigins class contains constants for allowed origins and service URLs in the NewsLadder system.
+The Origins class contains constants for allowed origins and service URLs in the News Ladder system.
 
 **Example**
 
 ```php
 <?php
-use Newsladder\lib\NewsLadderOrigins;
+use NewsLadder\PublisherAPI\Origins;
 
-$allowedOrigins = NewsLadderOrigins::ALLOWED;
-$tankUrl = NewsLadderOrigins::TANK;
+$allowedOrigins = Origins::ALLOWED;
+$tankUrl = Origins::TANK;
 ```
 
 ## License
