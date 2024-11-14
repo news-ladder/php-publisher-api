@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: Run Tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-tests:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      # checkout
+      - uses: actions/checkout@v4
+
+      # setup php & composer
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      # setup dependency cache
+      - uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          path: ${{ github.workspace }}/.composer
+          restore-keys: ${{ runner.os }}-composer-
+
+      # install dependencies
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      # execute tests
+      - name: Execute PHP tests
+        run: composer run test
