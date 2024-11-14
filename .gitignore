@@ -34,3 +34,9 @@ Thumbs.db
 
 # Helm chart
 frontend-*.tgz
+
+# configuration files 
+/src/config.ini
+/src/config.ini.development
+/src/config.ini.staging
+/src/config.ini.production

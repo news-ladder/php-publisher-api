@@ -1,0 +1,1 @@
+{"version":1,"defects":{"ConfigTest::testThrowsExceptionOnInvalidConfigFile":7},"times":{"ConfigTest::testLoadsDefaultConfig":0.003,"ConfigTest::testLoadsEnvironmentSpecificConfig":0,"ConfigTest::testHandlesMissingConfigFile":0,"ConfigTest::testThrowsExceptionOnInvalidConfigFile":0.009}}
