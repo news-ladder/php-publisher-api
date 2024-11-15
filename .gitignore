@@ -4,6 +4,9 @@
 /.composer
 /vendor
 
+# PHPUnit
+.phpunit.result.cache
+
 # Compiled output
 /dist
 /tmp
@@ -35,7 +38,7 @@ Thumbs.db
 # Helm chart
 frontend-*.tgz
 
-# configuration files 
+# configuration files
 /src/config.ini
 /src/config.ini.development
 /src/config.ini.staging
