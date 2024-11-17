@@ -1,0 +1,17 @@
+{
+  "name": "PHP",
+  "image": "mcr.microsoft.com/devcontainers/php:1-8-bookworm",
+  "forwardPorts": [],
+  "features": {
+    "ghcr.io/devcontainers-extra/features/composer:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "m1guelpf.better-pest",
+        "MehediDracula.php-namespace-resolver"
+      ]
+    }
+  }
+}
