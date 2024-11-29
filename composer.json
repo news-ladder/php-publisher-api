@@ -2,6 +2,7 @@
     "name": "news-ladder/publisher-api",
     "description": "News Ladder PHP library to interact with the Publisher API",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "News Ladder",
