@@ -2,9 +2,6 @@
 
 namespace NewsLadder\PublisherAPI;
 
-use NewsLadder\PublisherAPI\Config;
-use NewsLadder\PublisherAPI\Request;
-
 class Transaction {
 
     /**
@@ -90,7 +87,7 @@ class Transaction {
             'checkoutToken' => $this->checkout_token,
         ];
         $config = new Config();
-        $url = $config.get("origins", "api_url") . '/transaction/verify';
+        $url = sprintf("%s/transaction/verify", $config->get("origins", "api_url"));
         $response = new NewsLadderRequest($url, $payload);
         $response->send($response->url, $response->payload);
         
