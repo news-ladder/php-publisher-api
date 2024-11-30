@@ -1,25 +1,51 @@
-# News Ladder library for the Publisher API
 
-This repository contains the News Ladder library, which provides functionality for handling transactions and HTTP requests within the News Ladder system and the system of a publisher.
+# News Ladder Library for the Publisher API
+
+The **News Ladder library** is designed to streamline handling transactions and HTTP requests for 
+integration between the News Ladder system and publisher systems. 
+It provides a straightforward way to manage and verify transactions, send requests, and handle origin configurations for allowed services.
+
+---
 
 ## Table of Contents
 
+- [Overview](#overview)
+- [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [`Transaction`](#transaction)
-  - [`Request`](#request)
-  - [`Origins`](#origins)
+  - [Transaction](#transaction)
+  - [Request](#request)
+  - [Origins](#origins)
 - [License](#license)
+
+---
+
+## Overview
+
+The News Ladder library simplifies integration between News Ladder REST APIs and publisher eco system. 
+It includes classes for managing transactions, sending HTTP requests, and defining origin configurations. 
+With clear methods and examples, it aims to speed up development and ensure robust operations.
+
+---
+
+## Features
+
+- **Transaction Handling:** Verify and manage transactions with ease.
+- **HTTP Request Management:** A utility class to send HTTP requests with payloads.
+- **Origin Configuration:** Predefined constants for allowed origins and service URLs.
+- **MIT Licensed:** Open-source and free to use.
+
+---
 
 ## Installation
 
-To install the News Ladder library, you can use Composer:
+The News Ladder library is available via Composer. Install it by running:
 
-```shell
+```bash
 composer require news-ladder/publisher-api
 ```
 
-Alternatively, you can add the following directly to your `composer.json` file:
+Alternatively, update your `composer.json`:
 
 ```json
 {
@@ -29,22 +55,29 @@ Alternatively, you can add the following directly to your `composer.json` file:
 }
 ```
 
-Then run:
+Then, execute:
 
 ```bash
 composer install
 ```
 
+**Dependencies:**  
+Ensure you are using **PHP 7.4+** with Composer installed.
+
+---
+
 ## Usage
 
-### `Transaction`
+### Transaction
 
-The Transaction class represents a transaction in the News Ladder system.
+The `Transaction` class represents a transaction in the News Ladder system. Use it to verify and manage transactions.
 
-**Example**
+**Example:**
 
 ```php
 <?php
+require 'vendor/autoload.php';
+
 use NewsLadder\PublisherAPI\Transaction;
 
 $transaction = new Transaction(
@@ -60,14 +93,18 @@ $response = $transaction->verify();
 print_r($response);
 ```
 
-### `Request`
+---
 
-The Request class handles HTTP requests for the News Ladder system.
+### Request
 
-**Example**
+The `Request` class is used to send HTTP requests within the News Ladder system.
+
+**Example:**
 
 ```php
 <?php
+require 'vendor/autoload.php';
+
 use NewsLadder\PublisherAPI\Request;
 
 $request = new Request('https://example.com/api', ['param' => 'value']);
@@ -75,20 +112,18 @@ $response = $request->send($request->url, $request->payload);
 print_r($response);
 ```
 
-### `Origins`
+---
 
-The Origins class contains constants for allowed origins and service URLs in the News Ladder system.
+**Coding Standards:**
+- Follow PSR-12 coding standards.
+- Write clear and concise code comments.
+- Include tests for new features.
 
-**Example**
+**Feedback:**
+Feel free to report issues or suggest improvements in the [issues section](#).
 
-```php
-<?php
-use NewsLadder\PublisherAPI\Origins;
-
-$allowedOrigins = Origins::ALLOWED;
-$tankUrl = Origins::TANK;
-```
+---
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for more details.
