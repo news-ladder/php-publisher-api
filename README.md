@@ -50,7 +50,7 @@ Alternatively, update your `composer.json`:
 ```json
 {
     "require": {
-        "news-ladder/publisher-api": "dev-master"
+        "news-ladder/publisher-api": "dev-amin"
     }
 }
 ```
