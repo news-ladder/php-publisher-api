@@ -74,6 +74,21 @@ The `Transaction` class represents a transaction in the News Ladder system. Use 
 
 **Example:**
 
+This object ist a transaction object.
+This key values are necessary for the `Transaction HTTP Request`.
+
+```json
+{
+    "domain":           "The domain from the 'become publisher' process",
+    "magazineKey":      "The magazine key from the 'become publisher' process",
+    "name":             "The name of the article, e.g., article title",
+    "url":              "The URL of the article",
+    "articleEID":       "The external page ID; can be a string or any identifier related to the article",
+    "checkoutToken":    "The token from the URL's GET parameter"
+}
+```
+
+
 ```php
 <?php
 require 'vendor/autoload.php';
