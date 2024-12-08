@@ -95,14 +95,16 @@ require 'vendor/autoload.php';
 
 use NewsLadder\PublisherAPI\Transaction;
 
-$transaction = new Transaction(
-    'example.com',
-    'https://example.com/article',
-    'Example Article',
-    '12345',
-    'magazine_key',
-    'checkout_token'
-);
+$payload = [
+    'domain' => "example.com",
+    'url' => "https://example.com/article",
+    'name' => "Example Magazine",
+    'articleEID' => "12345",
+    'magazineKey' => "MAG123",
+    'checkoutToken' => "TOKEN123",
+];
+
+$transaction = new Transaction($payload);
 
 $response = $transaction->verify();
 print_r($response);
