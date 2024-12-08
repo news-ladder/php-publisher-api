@@ -5,7 +5,7 @@ namespace NewsLadder\PublisherAPI;
 class Transaction {
 
     /**
-     * @var string The requred key for the transaction.
+     * @var string The required keys for the transaction.
      */
     private $requiredKeys = [
         'domain', 
