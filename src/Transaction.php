@@ -65,6 +65,24 @@ class Transaction {
         $url = sprintf("%s/transaction/verify", $config->get("origins", "api_url"));
         $response = new Request($url, $this->payload);
         $response->send($response->url, $response->payload);
-        return $response;
+        
+        // Handle HTTP response codes
+        $httpStatusCode = $response->statusCode();
+        $responseBody = $response->message();
+    
+        switch ($httpStatusCode) {
+            case 200:
+                return $response; // Success case
+            case 400:
+                throw new \Exception("Bad Request: Invalid payload. Details: " . $responseBody);
+            case 401:
+                throw new \Exception("Unauthorized: Invalid token or credentials. Details: " . $responseBody);
+            case 404:
+                throw new \Exception("Not Found: The requested resource does not exist. Details: " . $responseBody);
+            case 500:
+                throw new \Exception("Internal Server Error: An unexpected error occurred. Please try again later.");
+            default:
+                throw new \Exception("Unexpected Error (HTTP $httpStatusCode): " . $responseBody);
+        }
     }
 }
