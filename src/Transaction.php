@@ -30,13 +30,11 @@ class Transaction {
         if (empty($payload)) {
             throw new \InvalidArgumentException("Payload is empty");
         }
-
-        if (count($this->requiredKeys) < count($payload)) {
-            throw new \InvalidArgumentException("Too many keys in payload");
-        }
+        
+        $payload = array_intersect_key($payload, array_flip($this->requiredKeys));
 
         foreach ($this->requiredKeys as $key) {
-            if (!array_key_exists($key, $payload)) {
+            if (!array_key_exists($key, $payload) || !isset($payload[$key]) || empty($payload[$key])) {
                 throw new \InvalidArgumentException("Missing required key: $key");
             }
         }
@@ -60,12 +58,12 @@ class Transaction {
     /**
      * Verifies the transaction.
      * 
-     * @return NewsLadderRequest The response from the verification request.
+     * @return Request The response from the verification request.
      */
     public function verify() {
         $config = new Config();
         $url = sprintf("%s/transaction/verify", $config->get("origins", "api_url"));
-        $response = new NewsLadderRequest($url, $this->payload);
+        $response = new Request($url, $this->payload);
         $response->send($response->url, $response->payload);
         return $response;
     }
