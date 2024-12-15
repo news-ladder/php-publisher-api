@@ -1,8 +1,8 @@
 
-# News Ladder Library for the Publisher API
+# News Ladder SDK for the Publisher API
 
-The **News Ladder library** is designed to streamline handling transactions and HTTP requests for 
-integration between the News Ladder system and publisher systems. 
+The **News Ladder SDK** is designed to streamline handling transactions and HTTP requests for
+integration between the News Ladder system and publisher systems.
 It provides a straightforward way to manage and verify transactions, send requests, and handle origin configurations for allowed services.
 
 ---
@@ -22,8 +22,8 @@ It provides a straightforward way to manage and verify transactions, send reques
 
 ## Overview
 
-The News Ladder library simplifies integration between News Ladder REST APIs and publisher eco system. 
-It includes classes for managing transactions, sending HTTP requests, and defining origin configurations. 
+The News Ladder SDK simplifies integration between News Ladder REST APIs and publisher eco system.
+It includes classes for managing transactions, sending HTTP requests, and defining origin configurations.
 With clear methods and examples, it aims to speed up development and ensure robust operations.
 
 ---
@@ -39,10 +39,10 @@ With clear methods and examples, it aims to speed up development and ensure robu
 
 ## Installation
 
-The News Ladder library is available via Composer. Install it by running:
+The News Ladder SDK is available via Composer. Install it by running:
 
 ```bash
-composer require news-ladder/publisher-api
+composer require news-ladder/publisher-sdk
 ```
 
 Alternatively, update your `composer.json`:
@@ -50,7 +50,7 @@ Alternatively, update your `composer.json`:
 ```json
 {
     "require": {
-        "news-ladder/publisher-api": "dev-main"
+        "news-ladder/publisher-sdk": "dev-main"
     }
 }
 ```
@@ -61,7 +61,7 @@ Then, execute:
 composer install
 ```
 
-**Dependencies:**  
+**Dependencies:**
 Ensure you are using **PHP 7.4+** with Composer installed.
 
 ---
@@ -93,7 +93,7 @@ This key values are necessary for the `Transaction HTTP Request`.
 <?php
 require 'vendor/autoload.php';
 
-use NewsLadder\PublisherAPI\Transaction;
+use NewsLadder\PublisherSDK\Transaction;
 
 $payload = [
     'domain' => "example.com",
@@ -122,7 +122,7 @@ The `Request` class is used to send HTTP requests within the News Ladder system.
 <?php
 require 'vendor/autoload.php';
 
-use NewsLadder\PublisherAPI\Request;
+use NewsLadder\PublisherSDK\Request;
 
 $request = new Request('https://example.com/api', ['param' => 'value']);
 $response = $request->send($request->url, $request->payload);

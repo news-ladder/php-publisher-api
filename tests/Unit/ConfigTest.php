@@ -1,12 +1,12 @@
 <?php
 
-use NewsLadder\PublisherAPI\Config;
+use NewsLadder\PublisherSDK\Config;
 
 beforeEach(function () {
-    
+
     $this->current_default_config_file_path = __DIR__ . '/../../src/config.ini';
     $this->current_default_config_file_path_tmp = __DIR__ . '/../../src/config.ini.temp';
-    
+
     if (file_exists($this->current_default_config_file_path)) {
         if (!rename($this->current_default_config_file_path, $this->current_default_config_file_path_tmp)) {
             throw new Exception("Failed to rename $this->current_default_config_file_path to $this->current_default_config_file_path_tmp");
@@ -31,7 +31,7 @@ beforeEach(function () {
 afterEach(function () {
     $this->current_default_config_file_path = __DIR__ . '/../../src/config.ini';
     $this->current_default_config_file_path_tmp = __DIR__ . '/../../src/config.ini.temp';
-    
+
     if (file_exists($this->current_default_config_file_path_tmp)) {
         if (!rename($this->current_default_config_file_path_tmp, $this->current_default_config_file_path)) {
             throw new Exception("Failed to rename $this->current_default_config_file_path to $this->current_default_config_file_path_tmp");
@@ -53,7 +53,7 @@ afterEach(function () {
 test('loads default configuration values', function () {
     // Delete the environment-specific config file to test default loading
     unlink($this->envConfigPath);
-    
+
     $config = new Config();
 
     expect($config->get('environment', 'scope'))->toBe('production');
