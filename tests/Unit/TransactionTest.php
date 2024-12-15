@@ -1,6 +1,6 @@
 <?php
 
-use NewsLadder\PublisherAPI\Transaction;
+use NewsLadder\PublisherSDK\Transaction;
 
 it('constructs a transaction with a valid payload', function () {
     $payload = [

@@ -1,6 +1,6 @@
 {
-    "name": "news-ladder/publisher-api",
-    "description": "News Ladder PHP library to interact with the Publisher API",
+    "name": "news-ladder/publisher-sdk",
+    "description": "News Ladder PHP SDK to interact with the Publisher API",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "NewsLadder\\PublisherAPI\\": "src/"
+            "NewsLadder\\PublisherSDK\\": "src/"
         }
     },
     "config": {

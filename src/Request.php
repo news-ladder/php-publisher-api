@@ -1,10 +1,10 @@
 <?php
 
-namespace NewsLadder\PublisherAPI;
+namespace NewsLadder\PublisherSDK;
 
-/** 
+/**
  * Class Request
- * 
+ *
  * Handles HTTP requests for the NewsLadder system.
  */
 
@@ -58,7 +58,7 @@ class Request {
      * @var string The HTTP status message from the response.
      */
     private $message;
-    
+
     /**
      * @var string The HTTP headers from the response.
      */
@@ -68,10 +68,10 @@ class Request {
      * @var string The HTTP header size from the response.
      */
     private $header_size;
-    
+
      /**
      * NewsLadderRequest constructor.
-     * 
+     *
      * @param string $url The URL for the request.
      * @param array $payload The payload for the request.
      */
@@ -80,7 +80,7 @@ class Request {
 
     /**
      * Magic getter method.
-     * 
+     *
      * @param string $property The property name.
      * @return mixed The property value or null if it does not exist.
      */
@@ -93,7 +93,7 @@ class Request {
 
     /**
      * Sends the HTTP request.
-     * 
+     *
      * @param string $method The Method for the request.
      * @param string $url The URL for the request.
      * @param array $payload The payload for the request.
@@ -101,8 +101,8 @@ class Request {
      * @throws \Exception If neither cURL nor allow_url_fopen is enabled.
      */
     public function send(
-            $method, 
-            $url, 
+            $method,
+            $url,
             $payload,
             $content_type = "application/json"
             ) {
@@ -113,14 +113,14 @@ class Request {
 
         if (function_exists('curl_init')) {
             return $this->sendCURL(
-                $method, 
-                $url, 
-                $payload, 
+                $method,
+                $url,
+                $payload,
                 $content_type);
         }
 
         throw new \Exception(
-            'CURL is deactivated on the system and allow_url_fopen is deactivated in php.ini. ' . 
+            'CURL is deactivated on the system and allow_url_fopen is deactivated in php.ini. ' .
             'To resolve this issue, either enable CURL in the PHP configuration or ensure ' .
             'that allow_url_fopen is set to "On" in the php.ini file.'
         );
@@ -128,7 +128,7 @@ class Request {
 
     /**
      * Parses HTTP response headers to extract version, status code, and message.
-     * 
+     *
      * @param string $headers The HTTP response headers.
      */
     private function parseResponseHeader($headers) {
@@ -148,16 +148,16 @@ class Request {
 
     /**
      * Sends the HTTP request using cURL.
-     * 
+     *
      * @param string $method The Method for the request.
      * @param string $url The URL for the request.
      * @param array $payload The payload for the request.
      * @return mixed The response from the request.
      */
     private function sendCURL(
-            $method, 
-            $url, 
-            $payload, 
+            $method,
+            $url,
+            $payload,
             $content_type = "application/json"
             ) {
 
@@ -165,13 +165,13 @@ class Request {
         $this->url = $url;
         $this->payload = $payload;
         $this->content_type = $content_type;
-        
+
         if ($content_type === "application/json") {
             $this->payload = json_encode($this->payload);
         } else {
             $this->payload = http_build_query($this->payload);
         }
-        
+
         $content_type = 'Content-Type: ' . $content_type;
 
 
@@ -187,11 +187,11 @@ class Request {
             CURLOPT_POSTFIELDS => $this->payload,
             CURLOPT_HTTPHEADER => array(
                 $content_type
-            ),  
+            ),
         ));
 
         $this->response = curl_exec($curl);
-        
+
         if ($this->response === false) {
             $this->error = true;
         } else {
@@ -204,11 +204,11 @@ class Request {
 
             // Get the status code using cURL's built-in function
             $this->status_code = curl_getinfo($curl, CURLINFO_HTTP_CODE); // Get the HTTP status code
-        
+
         }
         curl_close($curl);
-        
+
         return $this->response;
     }
-    
+
 }

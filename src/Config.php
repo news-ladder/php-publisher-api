@@ -1,6 +1,6 @@
 <?php
 
-namespace NewsLadder\PublisherAPI;
+namespace NewsLadder\PublisherSDK;
 
 /**
  * Library configuration class
@@ -10,13 +10,13 @@ class Config {
     /**
      * @var array
      */
-    private $defaults = 
+    private $defaults =
         [
             "environment" => [
-                "scope" => "production" 
+                "scope" => "production"
             ],
             "origins" => [
-                "api_url" => "https://api.news-ladder.com/v1/" 
+                "api_url" => "https://api.news-ladder.com/v1/"
             ]
         ];
 
@@ -37,16 +37,16 @@ class Config {
 
         // Save the environment
         $environment_value = $this->get("environment", "scope");
-        
+
         if (file_exists($filePath . "." . $environment_value)) {
             // Load the .ini file and store it as a multidimensional array
             $environment = parse_ini_file($filePath . "." . $environment_value, true);
-            
+
             $this->settings = array_merge($this->settings, $environment);
         }
-        
+
     }
- 
+
     // Method to access configuration values, with an optional section parameter
     public function get($section, $key = null)
     {

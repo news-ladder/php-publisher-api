@@ -1,6 +1,6 @@
 <?php
 
-namespace NewsLadder\PublisherAPI;
+namespace NewsLadder\PublisherSDK;
 
 class Transaction {
 
@@ -8,11 +8,11 @@ class Transaction {
      * @var string The required keys for the transaction.
      */
     private $requiredKeys = [
-        'domain', 
-        'url', 
-        'name', 
-        'articleEID', 
-        'magazineKey', 
+        'domain',
+        'url',
+        'name',
+        'articleEID',
+        'magazineKey',
         'checkoutToken'
     ];
 
@@ -23,14 +23,14 @@ class Transaction {
 
     /**
      * NewsLadderTransaction constructor.
-     * 
+     *
      * @param string $payload ['domain', 'url', 'name', 'articleEID', 'magazineKey', 'checkoutToken']
      */
     public function __construct(array $payload) {
         if (empty($payload)) {
             throw new \InvalidArgumentException("Payload is empty");
         }
-        
+
         $payload = array_intersect_key($payload, array_flip($this->requiredKeys));
 
         foreach ($this->requiredKeys as $key) {
@@ -44,7 +44,7 @@ class Transaction {
 
     /**
      * Magic getter method.
-     * 
+     *
      * @param string $key of the payload.
      * @return mixed The value from the key or null if it does not exist.
      */
@@ -57,7 +57,7 @@ class Transaction {
 
     /**
      * Verifies the transaction.
-     * 
+     *
      * @return Request The response from the verification request.
      */
     public function verify() {
@@ -65,11 +65,11 @@ class Transaction {
         $url = sprintf("%s/transaction/verify", $config->get("origins", "api_url"));
         $response = new Request($url, $this->payload);
         $response->send($response->url, $response->payload);
-        
+
         // Handle HTTP response codes
         $httpStatusCode = $response->statusCode();
         $responseBody = $response->message();
-    
+
         switch ($httpStatusCode) {
             case 200:
                 return $response; // Success case
